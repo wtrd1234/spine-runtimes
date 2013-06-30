@@ -105,7 +105,7 @@ void Skin_attachAll (const Skin* self, Skeleton* skeleton, const Skin* oldSkin) 
 	const _Entry *entry = SUB_CAST(_Internal, oldSkin) ->entries;
 	while (entry) {
 		Slot *slot = skeleton->slots[entry->slotIndex];
-		if (slot->attachment == entry->attachment) {
+		if (slot->attachment == NULL || slot->attachment == entry->attachment) {
 			Attachment *attachment = Skin_getAttachment(self, entry->slotIndex, entry->name);
 			if (attachment) Slot_setAttachment(slot, attachment);
 		}
